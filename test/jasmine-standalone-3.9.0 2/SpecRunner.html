@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Jasmine Spec Runner v3.9.0</title>
+
+  <link rel="shortcut icon" type="image/png" href="lib/jasmine-3.9.0/jasmine_favicon.png">
+  <link rel="stylesheet" href="lib/jasmine-3.9.0/jasmine.css">
+
+  <script src="lib/jasmine-3.9.0/jasmine.js"></script>
+  <script src="lib/jasmine-3.9.0/jasmine-html.js"></script>
+  <script src="lib/jasmine-3.9.0/boot0.js"></script>
+  <!-- optional: include a file here that configures the Jasmine env -->
+  
+
+ 
+<!-- stage components -->
+<script src="../../release/js/classes/stage/StageComponent.js"></script> <!-- Must be before all components -->
+<script src="../../release/js/classes/stage/BattleComponent.js"></script>
+<script src="../../release/js/classes/stage/DialogObject.js"></script>
+<script src="../../release/js/classes/stage/ItemSelectorComponent.js"></script>
+<script src="../../release/js/classes/stage/StageManager.js"></script>
+<script src="../../release/js/classes/stage/StageMapComponent.js"></script>
+<script src="../../release/js/classes/stage/StageMapSquareComponent.js"></script>
+<script src="../../release/js/classes/stage/EventHandler.js"></script>
+<script src="../../release/js/classes/stage/StageMapActionsComponent.js"></script>
+<script src="../../release/js/classes/game_master/GameMaster.js"></script>
+<script src="../../release/js/classes/game_master/Tools.js"></script>
+
+<!-- game master classes-->
+<script src="../../release/js/classes/game_master/characters/Character.js"></script>
+<script src="../../release/js/classes/game_master/characters/Enemy.js"></script>
+<script src="../../release/js/classes/game_master/characters/monsters/Monster.js"></script>
+<script src="../../release/js/classes/game_master/characters/monsters/Troll.js"></script>
+<script src="../../release/js/classes/game_master/characters/monsters/Deamon.js"></script>
+<script src="../../release/js/classes/game_master/characters/monsters/Wraith.js"></script>
+
+<script src="../../release/js/classes/game_master/inventory/Inventory.js" ></script>
+<script src="../../release/js/classes/game_master/inventory/InventoryItem.js" ></script>
+<script src="../../release/js/classes/game_master/inventory/Weapon.js"></script>
+<script src="../../release/js/classes/game_master/inventory/Food.js"></script>
+
+<script src="../../release/js/classes/game_master/map/Map.js"></script>
+<script src="../../release/js/classes/game_master/map/MapSquare.js"></script>
+<script src="../../release/js/classes/game_master/map/MapItem.js"></script>
+<script src="../../release/js/classes/game_master/map/CollectableMapItem.js"></script>
+<script src="../../release/js/classes/game_master/map/MagicalMapItem.js"></script>
+<script src="../../release/js/classes/game_master/map/MapPiecePlacer.js"></script>
+<script src="../../release/js/classes/game_master/map/Point.js"></script>
+<script src="../../release/js/classes/game_master/map/Range.js"></script>
+
+<script src="../../release/js/classes/game_master/map/Barrier.js"></script>
+
+<script src="../../release/js/classes/game_master/map/places/MapPlace.js"></script>
+<script src="../../release/js/classes/game_master/map/places/Castle.js"></script>
+<script src="../../release/js/classes/game_master/map/places/Shop.js"></script>
+<script src="../../release/js/classes/game_master/map/places/MapPlaceDoor.js"></script>
+<script src="../../release/js/classes/game_master/map/places/MapPlaceLayout.js"></script>
+
+<script src="../../release/js/classes/game_master/sorties/Sortie.js"></script>
+<script src="../../release/js/classes/game_master/sorties/Quest.js"></script>
+
+<!-- start sortie -->
+<script src="../../release/js/classes/game_master/sorties/start/StartSortie.js"></script>
+<script src="../../release/js/classes/game_master/sorties/start/StartQuest.js"></script>
+<script src="../../release/js/classes/game_master/sorties/start/SummoningScroll.js"></script>
+
+<!-- waterland sortie-->
+<script src="../../release/js/classes/game_master/sorties/waterland/WaterlandSortie.js"></script>
+
+<script src="../../release/js/classes/game_master/sorties/waterland/characters/Bandit.js"></script>
+<script src="../../release/js/classes/game_master/sorties/waterland/characters/FloorTroll.js"></script>
+
+<script src="../../release/js/classes/game_master/sorties/waterland/map_items/GrishamsHeirloom.js"></script>
+<script src="../../release/js/classes/game_master/sorties/waterland/map_items/WaterstoneShard.js"></script>
+<script src="../../release/js/classes/game_master/sorties/waterland/map_items/AncientMagicScroll.js"></script>
+<script src="../../release/js/classes/game_master/sorties/waterland/map_items/CeruleanCompass.js"></script>
+<script src="../../release/js/classes/game_master/sorties/waterland/map_items/RoyalPendant.js"></script>
+
+<script src="../../release/js/classes/game_master/sorties/waterland/quests/CastleGreymoorQuest.js"></script>
+<script src="../../release/js/classes/game_master/sorties/waterland/quests/GrishamsShopQuest.js"></script>
+<script src="../../release/js/classes/game_master/sorties/waterland/quests/BanditsForestQuest.js"></script>
+
+<script src="../../release/js/classes/game_master/sorties/waterland/barriers/CastleFloor.js"></script>
+<script src="../../release/js/classes/game_master/sorties/waterland/barriers/CastleWall.js"></script>
+<script src="../../release/js/classes/game_master/sorties/waterland/barriers/CastleDoor.js"></script>
+<script src="../../release/js/classes/game_master/sorties/waterland/barriers/FireWall.js"></script>
+<script src="../../release/js/classes/game_master/sorties/waterland/barriers/Water.js"></script>
+<script src="../../release/js/classes/game_master/sorties/waterland/barriers/GreenSerpentLake.js"></script>
+<script src="../../release/js/classes/game_master/sorties/waterland/barriers/Tree.js"></script>
+<script src="../../release/js/classes/game_master/sorties/waterland/barriers/Table.js"></script>
+
+<script src="../../release/js/classes/game_master/sorties/waterland/places/GrishamsShop.js"></script>
+<script src="../../release/js/classes/game_master/sorties/waterland/places/BanditsForest.js"></script>
+<script src="../../release/js/classes/game_master/sorties/waterland/places/CastleGreymoor.js"></script>
+
+<script src="../../release/js/classes/game_master/script/Script.js"></script>
+<script src="../../release/js/classes/game_master/script/ScriptLine.js"></script>
+<script src="../../release/js/classes/game_master/script/ScriptMaster.js"></script>
+
+<script src="../../release/js/classes/game_master/characters/players/Player.js"></script>
+<script src="../../release/js/classes/game_master/characters/players/Barbarian.js"></script>
+<script src="../../release/js/classes/game_master/characters/players/Rogue.js"></script>
+<script src="../../release/js/classes/game_master/characters/players/Sorcerer.js"></script>
+<script src="../../release/js/classes/game_master/characters/players/Warrior.js"></script>
+
+<script src="../../release/js/classes/game_master/lesson/Lesson.js"></script>
+<script src="../../release/js/classes/game_master/lesson/LessonMaster.js"></script>
+
+<!-- include spec files here... -->
+<!-- <script src="spec/GameBoard.spec.js"></script> -->
+<script src="spec/Barrier.spec.js"></script>
+<script src="spec/BattleComponent.spec.js"></script>
+<script src="spec/GameMaster.spec.js"></script>
+<script src="spec/Inventory.spec.js"></script>
+<script src="spec/InventoryItem.spec.js"></script>
+<script src="spec/ItemSelector.spec.js"></script>
+<script src="spec/LessonMaster.spec.js"></script>
+<script src="spec/Map.spec.js"></script>
+<script src="spec/MapSquare.spec.js"></script>
+<script src="spec/MapPlace.spec.js"></script>
+<script src="spec/MapPiecePlacer.spec.js"></script>
+<script src="spec/Monster.spec.js"></script>
+<script src="spec/Shop.spec.js"></script>
+<script src="spec/StageMap.spec.js"></script>
+<script src="spec/StageMapGridSquare.spec.js"></script>
+<script src="spec/Weapon.spec.js"></script>
+<script src="spec/StageMapActions.spec.js"></script>
+<script src="spec/Character.spec.js"></script>
+
+<script src="spec/sorties_tests/Sortie.spec.js"></script>
+<script src="spec/sorties_tests/CeruleanCompass.spec.js"></script>
+
+<script src="spec/quests/Quest.spec.js"></script>
+<script src="spec/quests/GrishamsShopQuest.specs.js"></script>
+
+<script src="spec/classes/TestCharacter.js"></script>
+<script src="spec/classes/TestEnemy.js"></script>
+<script src="spec/classes/TestPlayer.js"></script>
+<script src="spec/classes/TestSortie.js"></script>
+<script src="spec/classes/TestWeapon.js"></script>
+<script src="spec/classes/TestPlace.js"></script>
+<script src="spec/classes/TestQuest.js"></script>
+<script src="spec/classes/TestShop.js"></script>
+
+<script src="lib/jasmine-3.9.0/boot1.js"></script>
+
+</head>
+
+<body>
+  <div id="scratch_test"></div>
+</body>
+</html>

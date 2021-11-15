@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fateweavers Quest</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="js/classes/stage/EventHandler.js"></script>
+    <script src="js/classes/game_master/Tools.js"></script>
+
+    <!-- stage components -->
+    <script src="js/classes/stage/StageComponent.js"></script> <!-- needs to be before components -->
+    <script src="js/classes/stage/StageManager.js"></script>
+    <script src="js/classes/stage/BattleComponent.js"></script>
+    <script src="js/classes/stage/CollectedItemsComponent.js"></script>
+    <script src="js/classes/stage/DialogComponent.js"></script>
+    <script src="js/classes/stage/DialogObject.js"></script>
+    <script src="js/classes/stage/ItemSelectorComponent.js"></script>
+    <script src="js/classes/stage/LessonsComponent.js"></script>
+    <script src="js/classes/stage/PlayerBuilderComponent.js"></script>
+    <script src="js/classes/stage/PlayerStatsComponent.js"></script>
+    <script src="js/classes/stage/StageShopComponent.js"></script>
+    <script src="js/classes/stage/StageMapComponent.js"></script>
+    <script src="js/classes/stage/StageMapSquareComponent.js"></script>
+    <script src="js/classes/stage/StageMapActionsComponent.js"></script>
+    <script src="js/classes/stage/StoryTellerComponent.js"></script>
+    <script src="js/classes/stage/TesterComponent.js"></script>
+
+    <!-- Game Master classes | changing load order can affect game operation-->
+
+    <script src="js/classes/game_master/inventory/Inventory.js"></script>
+    <script src="js/classes/game_master/inventory/InventoryItem.js"></script>
+    <script src="js/classes/game_master/inventory/Food.js"></script>
+    <script src="js/classes/game_master/inventory/Weapon.js"></script>
+
+    <script src="js/classes/game_master/map/Map.js"></script>
+    <script src="js/classes/game_master/map/MapSquare.js"></script>
+    <script src="js/classes/game_master/map/MapItem.js"></script>
+    <script src="js/classes/game_master/map/CollectableMapItem.js"></script>
+    <script src="js/classes/game_master/map/MapPiecePlacer.js"></script>
+    <script src="js/classes/game_master/map/MagicalMapItem.js"></script>
+    <script src="js/classes/game_master/map/Point.js"></script>
+    <script src="js/classes/game_master/map/Range.js"></script>
+
+    <script src="js/classes/game_master/map/Barrier.js"></script>
+
+    <script src="js/classes/game_master/map/places/MapPlace.js"></script>
+    <script src="js/classes/game_master/map/places/MapPlaceDoor.js"></script>
+    <script src="js/classes/game_master/map/places/MapPlaceLayout.js"></script>
+    <script src="js/classes/game_master/map/places/MapPlaceCover.js"></script>
+    <script src="js/classes/game_master/map/places/Castle.js"></script>
+    <script src="js/classes/game_master/map/places/Shop.js"></script>
+
+    <script src="js/classes/game_master/characters/Character.js"></script>
+    <script src="js/classes/game_master/characters/Enemy.js"></script>
+    <script src="js/classes/game_master/characters/Friend.js"></script>
+    <script src="js/classes/game_master/characters/monsters/Monster.js"></script>
+    <script src="js/classes/game_master/characters/monsters/Deamon.js"></script>
+    <script src="js/classes/game_master/characters/monsters/Troll.js"></script>
+    <script src="js/classes/game_master/characters/monsters/Wraith.js"></script>
+
+    <script src="js/classes/game_master/characters/players/Player.js"></script>
+    <script src="js/classes/game_master/characters/players/Rogue.js"></script>
+    <script src="js/classes/game_master/characters/players/Warrior.js"></script>
+    <script src="js/classes/game_master/characters/players/Sorcerer.js"></script>
+    <script src="js/classes/game_master/characters/players/Barbarian.js"></script>
+
+    <script src="js/classes/game_master/script/Script.js"></script>
+    <script src="js/classes/game_master/script/ScriptLine.js"></script>
+    <script src="js/classes/game_master/script/ScriptMaster.js"></script>
+
+    <script src="js/classes/game_master/sorties/Sortie.js"></script>
+    <script src="js/classes/game_master/sorties/Quest.js"></script>
+
+    <!-- start sortie-->
+    <script src="js/classes/game_master/sorties/start/StartSortie.js"></script>
+    <script src="js/classes/game_master/sorties/start/StartQuest.js"></script>
+    <script src="js/classes/game_master/sorties/start/SummoningScroll.js"></script>
+
+    <!-- Waterland  sortie -->
+    <script src="js/classes/game_master/sorties/waterland/WaterlandSortie.js"></script>
+
+    <script src="js/classes/game_master/sorties/waterland/barriers/Barrel.js"></script>
+    <script src="js/classes/game_master/sorties/waterland/barriers/CastleDoor.js"></script>
+    <script src="js/classes/game_master/sorties/waterland/barriers/CastleFloor.js"></script>
+    <script src="js/classes/game_master/sorties/waterland/barriers/FireWall.js"></script>
+    <script src="js/classes/game_master/sorties/waterland/barriers/CastleWall.js"></script>
+    <script src="js/classes/game_master/sorties/waterland/barriers/ShopCounter.js"></script>
+    <script src="js/classes/game_master/sorties/waterland/barriers/ShopWall.js"></script>
+    <script src="js/classes/game_master/sorties/waterland/barriers/Table.js"></script>
+    <script src="js/classes/game_master/sorties/waterland/barriers/TownBuilding.js"></script>
+    <script src="js/classes/game_master/sorties/waterland/barriers/Tree.js"></script>
+    <script src="js/classes/game_master/sorties/waterland/barriers/VillagerEvent.js"></script>
+    <script src="js/classes/game_master/sorties/waterland/barriers/Water.js"></script>
+
+    <script src="js/classes/game_master/sorties/waterland/characters/Bandit.js"></script>
+    <script src="js/classes/game_master/sorties/waterland/characters/Grisham.js"></script>
+    <script src="js/classes/game_master/sorties/waterland/characters/FloorTroll.js"></script>
+
+    <script src="js/classes/game_master/sorties/waterland/map_items/AncientMagicScroll.js"></script>
+    <script src="js/classes/game_master/sorties/waterland/map_items/CeruleanCompass.js"></script>
+    <script src="js/classes/game_master/sorties/waterland/map_items/GrishamsHeirloom.js"></script>
+    <script src="js/classes/game_master/sorties/waterland/map_items/RoyalPendant.js"></script>
+    <script src="js/classes/game_master/sorties/waterland/map_items/WaterRelic.js"></script>
+    <script src="js/classes/game_master/sorties/waterland/map_items/WaterStone.js"></script>
+    <script src="js/classes/game_master/sorties/waterland/map_items/WaterstoneShard.js"></script>
+
+    <script src="js/classes/game_master/sorties/waterland/places/AzureLake.js"></script>
+    <script src="js/classes/game_master/sorties/waterland/places/BanditsForest.js"></script>
+    <script src="js/classes/game_master/sorties/waterland/places/CastleGreymoor.js"></script>
+    <script src="js/classes/game_master/sorties/waterland/places/ForestCover.js"></script>
+    <script src="js/classes/game_master/sorties/waterland/places/GrishamsShop.js"></script>
+    <script src="js/classes/game_master/sorties/waterland/places/RespiteVillage.js"></script>
+
+    <script src="js/classes/game_master/sorties/waterland/quests/AzureLakeQuest.js"></script>
+    <script src="js/classes/game_master/sorties/waterland/quests/GrishamsShopQuest.js"></script>
+    <script src="js/classes/game_master/sorties/waterland/quests/CastleGreymoorQuest.js"></script>
+    <script src="js/classes/game_master/sorties/waterland/quests/BanditsForestQuest.js"></script>
+
+    <!-- needs to load last and in this order -->
+    <script src="js/classes/game_master/GameMaster.js"></script>
+    <script src="js/MyAdventureApp.js"></script>
+
+    <script src="js/classes/game_master/lesson/Lesson.js"></script>
+    <script src="js/classes/game_master/lesson/LessonMaster.js"></script>
+
+</head>
+
+<body>
+    <div id="game_area">
+        <div id="big_screen__troupe" class="troupe">
+            <div id="game_flow__act" class ="act act__background--visible">
+                <div id="start_game__scene" class="scene content-center">
+                    <div id="start_game__scene_inner">
+                        <div class="start_game_scene_inner">
+                            <div>Welcome To</div>
+                            <div><h1>Fateweavers Quest</h1></div>
+                        </div>
+                        <div clss="mt-2">
+                            <button id="begin_game_btn" class="stage_btn stage_btn--success stage_btn--enabled">Begin</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="storyteller__act" class="act  act__background--visible">
+                <div id="dialog__scene" class="scene">
+                    <div id="dialog_inner"></div>
+                    <div id="dialog_screen__tap_message" class="content-center">click on dialog</div>
+                    <div class="content-center mt-2">
+                        <button id="skip_dialog_btn" class="stage_btn stage_btn--success stage_btn--enabled">Skip</button>
+                    </div>
+                </div>
+                <div class="test_controls">
+                    <button class="go_to_tester_btn">tester menu</button>
+                </div>
+            </div>
+            <div id="lessons__act" class="act act__background--visible">
+                <div id="lesson__scene" class="scene">
+                    <div id="lesson__title"></div>
+                    <div id="lesson__header">
+                        <div id="lesson__video">
+                            <div id="lesson__video_inner"><img></div>
+                        </div>
+                        <div id="lesson__description">
+                        </div>
+                    </div>
+                    <hr />
+                    <div id="lesson__challenges">
+                        After watching the video, <a id="lesson__exercises" href="#">go to the
+                            exercises and application
+                            implementation</a>.
+                    </div>
+                </div>
+                <div id="lessons__buttons" class="content-center">
+                    <button id="lesson_continue_btn">Continue</button>
+                </div>
+            </div>
+        </div>
+        <div id="play__troupe" class="troupe">
+            <div id="shopping__act" class="act act__background--visible">
+                <div id="shopping__header">
+                    Welcome to the Shop!
+                </div>
+                <div id="view_items__scene" class="scene">
+                    <div id="shopping__items" class="shopping_items mt-2"></div>
+                    <div class="mt-2 content-center">
+                        <button id="leave_shop_btn" class="stage_btn stage_btn--success stage_btn--enabled">Leave
+                            Shop</button>
+                    </div>
+                </div>
+                <div id="transaction__scene" class="scene">
+                    <div id="transaction__items" class="shopping_items mt-2"></div>
+                    <div class="mt-2 content-center">
+                        <button id="finished_choosing_item_btn"
+                            class="stage_btn stage_btn--success stage_btn--enabled">Finished</button>
+                    </div>
+                </div>
+            </div>
+            <div id="main__act" class="act">
+
+            </div>
+            <div id="build_player__act" class="act act__background--visible">
+                <div id="build_player__header">
+                    Which form do you wish?
+                </div>
+                <div id="build_player__name_input" class="mt-2">
+                    <input type="text" id="build_character_layer__player_name" class="stage_form_element"
+                        placeholder="What shall Fate call you?">
+                </div>
+                <div id="build_player__characters" class="mt-2"></div>
+                <div class="content-center mt-2">
+                    <button class="stage_btn stage_btn--success stage_btn--disabled" id="begin_adventure_btn">Begin Adventure!</button>
+                </div>
+            </div>
+            <div id="traveling__act" class="act act__background--visible">
+                <div id="traveling__act_inner">
+                    <div id="collected_items"></div>
+                    <div id="map">
+                        <div id="map__inner">
+                        </div>
+                    </div>
+                    <div id="map__actions"></div>
+                </div>
+            </div>
+            <div id="tester__act" class="act act__background--visible">
+                <div id="main_menu__scene" class="scene" style="color: white;">
+                    <h3 style="color: white;">tester menu [ <span id="test_mode"></span> ]</h3>
+
+                    <button id="test_scripts_btn">Scripts</button>
+                    <button id="test_map_btn">Map</button>
+                    <button id="test_quest_btn">Jump To Quest</button>
+                    <button id="test_storyteller_btn">Storyteller</button>
+
+                    <hr>
+                    <h3 style="color: white;">select an act</h3>
+                    <select id="goto_act_name">
+                        <option value="shopping">shopping</option>
+                        <option value="build_player">build player</option>
+                        <option value="traveling">traveling</option>
+                        <option value="battle">battle</option>
+                    </select>
+                    <button id="goto_act_btn">goto act</button>
+
+                </div>
+                <div id="script__scene" class="scene">
+                    <h3 style="color: white;">select a script</h3>
+                    <select id="script_tester__slugs"></select>
+                    <button id="play_script_btn">play</button>
+                </div>
+                <div id="map__scene" class="scene">
+                    <div id="map_tester__cords"></div>
+                    <div id="map_tester__inner"></div>
+                </div>
+                <div id="jump_to_quest__scene" class="scene">
+                    <h3 style="color: white;">select a quest</h3>
+                    <select id="script_tester__quests"></select>
+                    <button id="jump_to_quest_btn">jump</button>
+                </div>
+                <div id="storyteller__scene" class="scene">
+                    <h3 style="color: white;">select a story</h3>
+                    <select id="script_tester__stories"></select>
+                    <button id="tell_story_btn">start</button>
+                </div>
+            </div>
+            <div id="battle__act" class="act act__background--visible">
+                <div id="battle_inner">
+                    <div id="battle_enemy">
+                        <img id="battle_enemy__image">
+                        <div id="battle_enemy__name"></div>
+                        <div id="battle_enemy__stats"></div>
+                    </div>
+                    <div id="select_weapons__scene" class="scene">
+                        <div id="select_weapons__inner">
+                            <div id="select_weapons__header">
+                                <div class="weapons_selector__header">Attack Weapon</div>
+                                <div class="weapons_selector__header">Defense Weapon</div>
+                            </div>
+                            <div id="select_weapons__selected">
+                                <div id="chosen_attack_weapon" class="weapons_selector__chosen_weapon"></div>
+                                <div id="chosen_defense_weapon" class="weapons_selector__chosen_weapon"></div>
+                            </div>
+                            <div>
+                                <div id="attack_weapon_selector"></div>
+                                <div id="defense_weapon_selector"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="do_battle__scene" class="scene">
+                        <div id="battle_results"></div>
+                    </div>
+                </div>
+                <div id="battle_buttons"  class="content-center">
+                    <button id="battle_buttons__battle" class="stage_btn stage_btn--danger stage_btn--enabled battle_button">BATTLE!</button>
+                    <button id="battle_buttons__retreat" class="stage_btn stage_btn--success stage_btn--enabled battle_button">Retreat</button>
+                    <button id="battle_buttons__leave" class="stage_btn stage_btn--success stage_btn--enabled battle_button">Leave</button>
+                </div>
+            </div>
+            <div id="dashboard">
+                <div id="player_stats" class="dashboard__panel">
+                </div>
+                <div id="dialog" class="dashboard__panel">
+                    <div id="dialog_inner"></div>
+                </div>
+                <div>
+                    <div class="test_controls">
+                        <button class="go_to_tester_btn">tester menu</button>
+                    </div>
+                </div>
+            </div>
+            <div id="game_over_screen">
+                <img src="images/game_over.png">
+            </div>
+        </div>
+    </div>
+
+    <audio id="theme" src="sounds/theme.mp3"></audio>
+</body>
+
+</html>
